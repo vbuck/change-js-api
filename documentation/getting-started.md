@@ -1,16 +1,16 @@
 #Getting Started
 
-1. Load the required libraries
+1. __Load the required libraries__
 
    ```xml
    <script type="text/javascript" src="./ChangeOrgApi/sha256.js"></script>
    <script type="text/javascript" src="./ChangeOrgApi/changeorgapi.min.js"></script>
    ```
-   `sha256.js` is a third-party library provided by [Jeff Mott](https://code.google.com/p/crypto-js/). It is used to sign your requests using SHA-2 encryption. Learn more about [request signatures](docs/request-signatures.md).
+   `sha256.js` is a third-party library provided by [Jeff Mott](https://code.google.com/p/crypto-js/). It is used to sign your requests using SHA-2 encryption. Learn more about [request signatures](/documentation/request-signatures.md).
 
-2. Select your API.
+2. __Select your API.__
 
-   Available interfaces include [Petitions](src/ChangeOrgApiPetition.js), [Users](src/ChangeOrgApiUser.js), and [Organizations](src/ChangeOrgApiOrganization.js).
+   Available interfaces include [Petitions](/src/ChangeOrgApiPetition.js), [Users](/src/ChangeOrgApiUser.js), and [Organizations](/src/ChangeOrgApiOrganization.js).
    
    In this example, we will be adding a signature to a petition.
    
@@ -25,9 +25,9 @@
    
    Every interface requires a `ChangeOrgApiClient` object, which contains your API developer credentials.
    
-   If you don't want to expose your keys, then read more about [securing your client](docs/client-security.md).
+   If you don't want to expose your keys, then read more about [securing your client](/documentation/client-security.md).
 
-3. Set your callback.
+3. __Set your callback.__
 
    A callback is triggered when the API request completes:
    
@@ -37,9 +37,9 @@
    });	
    ```
    
-   Every interface lets you specify a callback with `setCallback`. It receives a `ChangeOrgApiResponse` object. You can learn more about the [response object](docs/response-objects.md).
+   Every interface lets you specify a callback with `setCallback`. It receives a `ChangeOrgApiResponse` object. You can learn more about the [response object](/documentation/response-object.md).
 
-4. Make your request.
+4. __Make your request.__
 
    Depending on the type of request, you might write something like this:
    
@@ -66,4 +66,4 @@
 
 Summary
 ------
-Nearly every type of request you make to interact with Change.org can be done by following these four steps. You can learn more about the provided interfaces [here](docs/interfaces.md).
+Nearly every type of request you make to interact with Change.org can be done by following these four steps. You can learn more about the provided interfaces [here](/documentation/interfaces.md).

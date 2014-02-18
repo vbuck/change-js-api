@@ -24,6 +24,9 @@ var ChangeOrgApiPetition=function(client) {
 		'/v1/petitions/:petition_id/targets',				// getTargets
 		'/v1/petitions/:petition_id/reasons',				// getReasons
 		'/v1/petitions/:petition_id/updates',				// getUpdates
+		'/v1/petitions',									// getPetitions
+		'/v1/petitions/:petition_id',						// getPetition
+		'/v1/petitions/get_id'								// getPetitionId
 	];
 
 	/**
@@ -105,19 +108,85 @@ var ChangeOrgApiPetition=function(client) {
 	};
 
 	/**
-	 * Returns signatures on a petition.
+	 * Returns information about the specified petition.
 	 *
-	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#signatures-on-petitions
+	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitionspetition_id
 	 * 
-	 * @param object data
+	 * @param number|object data
 	 * @param function callback
 	 * @return ChangeOrgApiPetition
 	 */
-	this.getSignatures=function(data,callback) {
+	this.get=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+
 		var request=new ChangeOrgApiRequest(this.getClient())
 			.setMethod('GET')
 			.addData(data)
-			.setEndpoint(this.getEndpoint(1,data))
+			.setEndpoint(this.getEndpoint(7,data))
+			.setSignatureRequiredFlag(false)
+			;
+
+		if(callback)
+			request.setOnSuccess(callback);
+		else if(this._callback)
+			request.setOnSuccess(this._callback);
+
+		request.send();
+
+		return this;
+	};
+
+	/**
+	 * Returns the unique Change.org ID for the specified petition.
+	 *
+	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitionsget_id
+	 * 
+	 * @param string|object data
+	 * @param function callback
+	 * @return ChangeOrgApiPetition
+	 */
+	this.getPetitionId=function(data,callback) {
+		if(typeof data=='string')
+			data={petition_url:data};
+
+		var request=new ChangeOrgApiRequest(this.getClient())
+			.setMethod('GET')
+			.addData(data)
+			.setEndpoint(this.getEndpoint(8,data))
+			.setSignatureRequiredFlag(false)
+			;
+
+		if(callback)
+			request.setOnSuccess(callback);
+		else if(this._callback)
+			request.setOnSuccess(this._callback);
+
+		request.send();
+
+		return this;
+	};
+
+	/**
+	 * Returns the array of petition data objects corresponding to the petition IDs submitted.
+	 *
+	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitions
+	 * 
+	 * @param string|object data
+	 * @param function callback
+	 * @return ChangeOrgApiPetition
+	 */
+	this.getPetitions=function(data,callback) {
+		if(typeof data=='number')
+			return this.getPetition(data,callback);
+
+		if(typeof data=='string')
+			data={petition_ids:data};
+
+		var request=new ChangeOrgApiRequest(this.getClient())
+			.setMethod('GET')
+			.addData(data)
+			.setEndpoint(this.getEndpoint(6,data))
 			.setSignatureRequiredFlag(false)
 			;
 
@@ -141,6 +210,9 @@ var ChangeOrgApiPetition=function(client) {
 	 * @return ChangeOrgApiPetition
 	 */
 	this.getRecentSignatures=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+		
 		var request=new ChangeOrgApiRequest(this.getClient())
 			.setMethod('GET')
 			.addData(data)
@@ -157,6 +229,36 @@ var ChangeOrgApiPetition=function(client) {
 	};
 
 	/**
+	 * Returns signatures on a petition.
+	 *
+	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#signatures-on-petitions
+	 * 
+	 * @param object data
+	 * @param function callback
+	 * @return ChangeOrgApiPetition
+	 */
+	this.getSignatures=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+		
+		var request=new ChangeOrgApiRequest(this.getClient())
+			.setMethod('GET')
+			.addData(data)
+			.setEndpoint(this.getEndpoint(1,data))
+			.setSignatureRequiredFlag(false)
+			;
+
+		if(callback)
+			request.setOnSuccess(callback);
+		else if(this._callback)
+			request.setOnSuccess(this._callback);
+
+		request.send();
+
+		return this;
+	};
+
+	/**
 	 * Returns the reasons given by signers of a petition for having signed.
 	 *
 	 * @see https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/reasons.md
@@ -166,6 +268,9 @@ var ChangeOrgApiPetition=function(client) {
 	 * @return ChangeOrgApiPetition
 	 */
 	this.getReasons=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+
 		var request=new ChangeOrgApiRequest(this.getClient())
 			.setMethod('GET')
 			.addData(data)
@@ -193,6 +298,9 @@ var ChangeOrgApiPetition=function(client) {
 	 * @return ChangeOrgApiPetition
 	 */
 	this.getTargets=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+
 		var request=new ChangeOrgApiRequest(this.getClient())
 			.setMethod('GET')
 			.addData(data)
@@ -220,6 +328,9 @@ var ChangeOrgApiPetition=function(client) {
 	 * @return ChangeOrgApiPetition
 	 */
 	this.getUpdates=function(data,callback) {
+		if(typeof data=='number' || typeof data=='string')
+			data={petition_id:data};
+		
 		var request=new ChangeOrgApiRequest(this.getClient())
 			.setMethod('GET')
 			.addData(data)

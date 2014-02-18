@@ -16,8 +16,21 @@ var ChangeOrgApiPetitionAuthorization=function(client) {
 	/* @var _client ChangeOrgApiConnection */
 	this._connection=null;
 	this._data={};
+	this._doFollowup=false;
 	this._endpoint='/v1/petitions/:petition_id/auth_keys';
 	this._petition_id='';
+
+	/**
+	 * Resolve the authorization callback before sending the request.
+	 * 
+	 * @return function
+	 */
+	this._getAuthorizationCallback=function() {
+		if(this._doFollowup===true)
+			return this._getFollowupCallback(this._authorizationCallback);
+
+		return this._authorizationCallback;
+	};
 
 	/**
 	 * Get default request options.
@@ -30,6 +43,25 @@ var ChangeOrgApiPetitionAuthorization=function(client) {
 			requester_email 	: '',
 			source 				: '',
 			source_description 	: ''
+		};
+	};
+
+	/**
+	 * Get the follow-up callback wrapper.
+	 * 
+	 * @param function originalCallback
+	 * @return function
+	 */
+	this._getFollowupCallback=function(originalCallback) {
+		var self=this;
+
+		return function(response) {
+			self.setFollowupFlag(false);
+
+			if(response.getData('status')!='granted' || !response.getData('auth_key'))
+				self.authorize(originalCallback);
+			else
+				originalCallback.call(originalCallback,response);
 		};
 	};
 
@@ -50,7 +82,7 @@ var ChangeOrgApiPetitionAuthorization=function(client) {
 			.setMethod('POST')
 			.setEndpoint(ChangeOrgApiUtils.bind(this._endpoint,this._petition_id))
 			.setSignatureAuthKeyRequiredFlag(false)
-			.setOnSuccess(this._authorizationCallback)
+			.setOnSuccess(this._getAuthorizationCallback())
 			;
 
 		request.send();
@@ -85,6 +117,15 @@ var ChangeOrgApiPetitionAuthorization=function(client) {
 	this.getEndpoint=function(data) {
 		return ChangeOrgApiUtils.bind(this._endpoint,data);
 	};
+
+	/**
+	 * Get the request follow-up flag.
+	 * 
+	 * @return boolean
+	 */
+	this.getFollowupFlag=function() {
+		return this._doFollowup;
+	}
 
 	/**
 	 * Get the requester.
@@ -149,6 +190,18 @@ var ChangeOrgApiPetitionAuthorization=function(client) {
 			throw new ChangeOrgApiException('Client must be an instance of ChangeOrgApiClient.');
 
 		this._client=client;
+
+		return this;
+	};
+
+	/**
+	 * Set the request follow-up flag.
+	 *
+	 * @param boolean bool
+	 * @return ChangeOrgApiRequest
+	 */
+	this.setFollowupFlag=function(bool) {
+		this._doFollowup=bool;
 
 		return this;
 	};

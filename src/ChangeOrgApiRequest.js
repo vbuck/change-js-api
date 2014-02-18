@@ -11,9 +11,9 @@ var ChangeOrgApiRequest=function(client) {
 
 	/* @var _authKey string */
 	this._authKey=null;
-	this._data={};
 	/* @var _connection ChangeOrgApiConnection */
 	this._connection=null;
+	this._data={};
 	this._useSignature=true;
 	this._useAuthKeyInSignature=true;
 
@@ -48,8 +48,12 @@ var ChangeOrgApiRequest=function(client) {
 	 */
 	this.addData=function(data) {
 		if(typeof this._data=='object') {
-			for(var key in data)
-				this._data[key]=data[key];
+			for(var key in data) {
+				if(key=='auth_key')
+					this.setAuthKey(data[key]);
+				else
+					this._data[key]=data[key];
+			}
 		}
 
 		return this;
@@ -62,7 +66,7 @@ var ChangeOrgApiRequest=function(client) {
 	 *
 	 * @return ChangeOrgApiRequest
 	 */
-	this.addSignature=function() {
+	this.addSignature=function(clear) {
 		try {
 			if(typeof this._data.rsig=='undefined' || !this._data.rsig.length) {
 				var body=[], signature='';
@@ -220,6 +224,29 @@ var ChangeOrgApiRequest=function(client) {
 	};
 
 	/**
+	 * Reset the connection object.
+	 * 
+	 * @return ChangeOrgApiRequest
+	 */
+	this.resetConnection=function() {
+		this._connection=null;
+
+		return this;
+	};
+
+	/**
+	 * Remove the signature from the request.
+	 * 
+	 * @return ChangeOrgApiRequest
+	 */
+	this.removeSignature=function() {
+		if(typeof this._data.rsig!='undefined')
+			delete this._data.rsig;
+
+		return this;
+	};
+
+	/**
 	 * Submit the request.
 	 * 
 	 * @return ChangeOrgApiRequest
@@ -228,6 +255,9 @@ var ChangeOrgApiRequest=function(client) {
 		var connection=this.getConnection();
 
 		connection.setEndpoint(this._data.endpoint);
+
+		if(this._doFollowup===true)
+			this._setFollowupCallback();
 		
 		this.getConnection().send(this.buildRequest());
 
@@ -242,6 +272,20 @@ var ChangeOrgApiRequest=function(client) {
 	 */
 	this.setAuthKey=function(authKey) {
 		this._authKey=authKey;
+
+		return this;
+	};
+
+	/**
+	 * Set the client.
+	 * 
+	 * @param ChangeOrgApiClient client
+	 */
+	this.setClient=function(client) {
+		if(!(client instanceof ChangeOrgApiClient))
+			throw new ChangeOrgApiException('Client must be an instance of ChangeOrgApiClient.');
+
+		this._client=client;
 
 		return this;
 	};
@@ -265,20 +309,6 @@ var ChangeOrgApiRequest=function(client) {
 	 */
 	this.setEndpoint=function(endpoint) {
 		this._data.endpoint=endpoint;
-
-		return this;
-	};
-
-	/**
-	 * Set the client.
-	 * 
-	 * @param ChangeOrgApiClient client
-	 */
-	this.setClient=function(client) {
-		if(!(client instanceof ChangeOrgApiClient))
-			throw new ChangeOrgApiException('Client must be an instance of ChangeOrgApiClient.');
-
-		this._client=client;
 
 		return this;
 	};

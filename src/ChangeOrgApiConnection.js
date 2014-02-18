@@ -80,7 +80,6 @@ var ChangeOrgApiConnection=function(options) {
 		object.onreadystatechange=function() {
 			if(self.getIsDone()) {
 				var response=new ChangeOrgApiResponse(self);
-
 				data.onSuccess.call(null,response);
 			}
 		};
@@ -196,6 +195,24 @@ var ChangeOrgApiConnection=function(options) {
 	 */
 	this.getParams=function() {
 		return this._params;
+	};
+
+	/**
+	 * Get the parsed response.
+	 * 
+	 * @return object|null
+	 */
+	this.getResponse=function() {
+		var response=null;
+
+		try {
+			response=JSON.parse(this._connection.responseText);
+		}
+		catch(error) {
+			response=null;
+		}
+
+		return response;
 	};
 
 	/**
