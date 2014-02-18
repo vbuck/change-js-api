@@ -16,8 +16,8 @@
    
    ```javascript
    var client=new ChangeOrgApiClient({
-	api_key : 'YOUR_PUBLIC_API_KEY',
-	secret 	: 'YOUR_SECRET_KEY'
+       api_key  : 'YOUR_PUBLIC_API_KEY',
+       secret 	: 'YOUR_SECRET_KEY'
    });
    
    var petition=new ChangeOrgApiPetition(client);	
@@ -33,7 +33,7 @@
    
    ```javascript
    petition.setCallback(function(response) {
-	alert(response.getData('result'));
+       alert(response.getData('result'));
    });	
    ```
    
@@ -45,20 +45,20 @@
    
    ```javascript
    petition.addSignature({
-	petition_id 		: 'YOUR_PETITION_ID',
-	auth_key 		: 'YOUR_AUTH_KEY',
-	source 			: 'http://www.myblog.com/sign-the-petition/',
-	email 			: 'johndoe@gmail.com',
-	first_name 		: 'John',
-	last_name 		: 'Doe',
-	address 		: '123 Any St.',
-	city 			: 'Beverly Hills',
-	state_province 		: 'CA',
-	postal_code 		: '90210',
-	country_code 		: 'US',
-	phone 			: '5555555555',
-	reason 			: 'I support this petition',
-	hidden 			: false
+       petition_id 		: 'YOUR_PETITION_ID',
+       auth_key 		: 'YOUR_AUTH_KEY',
+       source 			: 'http://www.myblog.com/sign-the-petition/',
+       email 			: 'johndoe@gmail.com',
+       first_name 		: 'John',
+       last_name 		: 'Doe',
+       address 		: '123 Any St.',
+       city 			: 'Beverly Hills',
+       state_province 		: 'CA',
+       postal_code 		: '90210',
+       country_code 		: 'US',
+       phone 			: '5555555555',
+       reason 			: 'I support this petition',
+       hidden 			: false
    });
    ```
    
