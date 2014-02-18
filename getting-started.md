@@ -6,11 +6,11 @@
 <script type="text/javascript" src="./ChangeOrgApi/sha256.js"></script>
 <script type="text/javascript" src="./ChangeOrgApi/changeorgapi.min.js"></script>
 ```
-`sha256.js` is a third-party library provided by [Jeff Mott](https://code.google.com/p/crypto-js/). It is used to sign your requests using SHA-2 encryption. Learn more about [request signatures](../blob/master/docs/request-signatures.md).
+`sha256.js` is a third-party library provided by [Jeff Mott](https://code.google.com/p/crypto-js/). It is used to sign your requests using SHA-2 encryption. Learn more about [request signatures](docs/request-signatures.md).
 
 2. Select your API.
 
-Available interfaces include [Petitions](../blob/master/src/ChangeOrgApiPetition.js),[Users](../blob/master/src/ChangeOrgApiUser.js), and [Organizations](../blob/master/src/ChangeOrgApiOrganization).
+Available interfaces include [Petitions](src/ChangeOrgApiPetition.js),[Users](../blob/master/src/ChangeOrgApiUser.js), and [Organizations](src/ChangeOrgApiOrganization).
 
 In this example, we will be adding a signature to a petition.
 
@@ -25,7 +25,7 @@ var petition=new ChangeOrgApiPetition(client);
 
 Every interface requires a `ChangeOrgApiClient` object, which contains your API developer credentials.
 
-If you don't want to expose your keys, then read more about [securing your client](../blob/master/docs/client-security.md).
+If you don't want to expose your keys, then read more about [securing your client](docs/client-security.md).
 
 3. Set your callback.
 
@@ -37,7 +37,7 @@ petition.setCallback(function(response) {
 });	
 ```
 
-Every interface lets you specify a callback with `setCallback`. It receives a `ChangeOrgApiResponse` object. You can learn more about the [response object](../blob/master/docs/response-objects.md).
+Every interface lets you specify a callback with `setCallback`. It receives a `ChangeOrgApiResponse` object. You can learn more about the [response object](docs/response-objects.md).
 
 4. Make your request.
 
@@ -66,4 +66,4 @@ In this example, we are adding a signature to the specified petition.
 
 Summary
 ------
-Nearly every type of request you make to interact with Change.org can be done by following these four steps. You can learn more about the provided interfaces [here](../blob/master/docs/interfaces.md).
+Nearly every type of request you make to interact with Change.org can be done by following these four steps. You can learn more about the provided interfaces [here](docs/interfaces.md).
