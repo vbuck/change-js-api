@@ -10,7 +10,7 @@
 
 2. Select your API.
 
-   Available interfaces include [Petitions](src/ChangeOrgApiPetition.js),[Users](../blob/master/src/ChangeOrgApiUser.js), and [Organizations](src/ChangeOrgApiOrganization).
+   Available interfaces include [Petitions](src/ChangeOrgApiPetition.js), [Users](src/ChangeOrgApiUser.js), and [Organizations](src/ChangeOrgApiOrganization.js).
    
    In this example, we will be adding a signature to a petition.
    
