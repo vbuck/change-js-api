@@ -3,8 +3,8 @@
 The Change.org JavaScript API is a free library that enables you to communicate with the Change.org API more easily. Built on JavaScript, this library will bring your work to the front-end, making it a convenient choice for many modern web applications.
 
 
-* [Getting Started](https://github.com/change/api_docs/blob/master/getting-started.md)
-* [Examples](https://github.com/change/api_docs/blob/master/examples/index.md)
+* [Getting Started](../blob/master/getting-started.md)
+* [Examples](../blob/master/examples/index.md)
 * Change.org PHP API _coming soon_
 
 License
