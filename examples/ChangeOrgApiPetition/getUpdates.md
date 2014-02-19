@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getUpdates
 
 Returns the news updates on a petition.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/updates.md#get-petitionspetition_idupdates]
 
 Example

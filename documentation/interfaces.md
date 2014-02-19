@@ -5,6 +5,7 @@ Interfaces provide access to [Change.org API resources](https://github.com/chang
 ChangeOrgApiPetition
 ------
 Request information about petitions.
+
 See [https://github.com/change/api_docs/blob/master/v1/documentation/resources.md#petitions]
 
 ###Resources
@@ -23,6 +24,7 @@ See [https://github.com/change/api_docs/blob/master/v1/documentation/resources.m
 ChangeOrgApiUser
 ------
 Request information about users.
+
 See [https://github.com/change/api_docs/blob/master/v1/resources.md#users]
 
 ###Resources
@@ -35,6 +37,7 @@ See [https://github.com/change/api_docs/blob/master/v1/resources.md#users]
 ChangeOrgApiOrganization
 ------
 Request information about organizations.
+
 See [https://github.com/change/api_docs/blob/master/v1/resources.md#organizations]
 
 ###Resources

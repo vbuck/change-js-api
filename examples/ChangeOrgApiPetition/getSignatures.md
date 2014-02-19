@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getSignatures
 
 Returns signatures on a petition.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#get-petitionspetition_idsignatures]
 
 Example

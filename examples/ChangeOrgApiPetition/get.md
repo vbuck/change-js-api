@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.get
 
 Returns information about this petition, including the overview, letter to the petition target, URL to the petition image (if available), and signature count.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitionspetition_id]
 
 Example

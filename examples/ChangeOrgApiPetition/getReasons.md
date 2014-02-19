@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getReasons
 
 Returns the reasons given by signers of a petition for having signed.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/reasons.md#get-petitionspetition_idreasons]
 
 Example

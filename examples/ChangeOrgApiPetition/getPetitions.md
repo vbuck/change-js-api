@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getPetitions
 
 Returns the array of petition data objects corresponding to the petition IDs submitted.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitions]
 
 Example

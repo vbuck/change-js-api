@@ -10,7 +10,7 @@
 
 2. __Select your API.__
 
-   Available interfaces include [Petitions](/src/ChangeOrgApiPetition.js), [Users](/src/ChangeOrgApiUser.js), and [Organizations](/src/ChangeOrgApiOrganization.js).
+   Available interfaces include [Petitions](/documentation/interfaces.md#changeorgapipetition), [Users](/documentation/interfaces.md#changeorgapiuer), and [Organizations](/documentation/interfaces.md#changeorgapiorganization).
    
    In this example, we will be adding a signature to a petition.
    

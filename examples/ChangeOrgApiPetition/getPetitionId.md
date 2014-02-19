@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getPetitionId
 
 Returns the unique Change.org ID for the petition specified by petition_url. Before performing requests on a petition, the unique Change.org ID is required because petition URLs can change.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions.md#get-petitionsget_id]
 
 Example

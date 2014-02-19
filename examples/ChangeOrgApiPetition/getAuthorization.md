@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getAuthorization
 
 Obtain an authorization key for use when signing petitions. This is a convenience method for accessing the `ChangeOrgApiPetitionAuthorization` interface.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/auth_keys.md]
 
 Example

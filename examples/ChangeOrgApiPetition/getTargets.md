@@ -1,6 +1,7 @@
 #ChangeOrgApiPetition.getTargets
 
 Returns the target(s) of a petition.
+
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/targets.md#targets-on-petitions]
 
 Example

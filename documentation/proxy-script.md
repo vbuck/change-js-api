@@ -9,7 +9,7 @@ When to Proxy a Request
 2. You do not want to expose your secret key.
 3. You want to impose additional restrictions on your request.
 
-For these reasons, a proxy class is provided, `ChangeOrgApiProxy`. This static class can be dropped in a folder, along with the companion `index.php`:
+For these reasons, a proxy class is provided, `ChangeOrgApiProxy` ([ChangeOrgApiProxy.php](/proxy/ChangeOrgApiProxy.php)). This static class can be dropped in a folder, along with the companion loader ([index.php](/proxy/index.php)):
 
 ```php
 <?php
@@ -39,9 +39,9 @@ This must be done before making any requests.
 Google Chrome Extensions
 ------
 
-If you are using this library in a Google Chrome extension, you do not need the proxy script. Chrome can bypass cross-origin restrictions as long as you provide adequate permissions in your request.
+If you are using this library in a Google Chrome extension, you do not need the proxy script. Chrome can bypass cross-origin restrictions as long as you provide adequate permissions in your manifest file.
 
 Built for CORS
 ------
 
-The `ChangeOrgApiProxy` class is designed as a solution to the problem presented by the Change.org API server omitting a `Access-Control-Allow-Origin` header. If they ever do implement CORS, you can stop using the proxy by clearing or else not setting `ChangeOrgApiUtils.proxy` on the front-end, and it will default to using an `XMLHttpRequest` object for communicating directly with their server.
+The `ChangeOrgApiProxy` class is designed as a solution to the problem presented by the Change.org API server omitting an `Access-Control-Allow-Origin` header. If they ever do implement CORS, you can stop using the proxy by clearing or else not setting `ChangeOrgApiUtils.proxy` on the front-end, and it will default to using an `XMLHttpRequest` object for communicating directly with their server.
