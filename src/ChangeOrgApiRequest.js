@@ -66,9 +66,13 @@ var ChangeOrgApiRequest=function(client) {
 	 *
 	 * @return ChangeOrgApiRequest
 	 */
-	this.addSignature=function(clear) {
+	this.addSignature=function() {
 		try {
-			if(typeof this._data.rsig=='undefined' || !this._data.rsig.length) {
+			if(!this.getClient().getSecret() && this.getSignatureRequiredFlag()) { // Mark signature with flag to sign server-side
+				this._data.server_sign=1;
+				this._data.include_auth_key=this.getSignatureAuthKeyRequiredFlag()?1:0;
+			}
+			else if(typeof this._data.rsig=='undefined' || !this._data.rsig.length) {
 				var body=[], signature='';
 
 				for(var key in this._data) {

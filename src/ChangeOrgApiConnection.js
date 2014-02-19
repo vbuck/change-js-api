@@ -263,6 +263,17 @@ var ChangeOrgApiConnection=function(options) {
 	};
 
 	/**
+	 * Set the API URL.
+	 * 
+	 * @param string url
+	 */
+	this.setApi=function(url) {
+		this._api=url;
+
+		return this;
+	}
+
+	/**
 	 * Set the request content type.
 	 * 
 	 * @param string contentType
