@@ -1,6 +1,6 @@
 #ChangeOrgApiPetition.addSignature
 
-Returns an array of the 10 most recent signatures on a petition.
+Adds a signature to a petition.
 
 Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#get-petitionspetition_idsignaturesrecent]
 
