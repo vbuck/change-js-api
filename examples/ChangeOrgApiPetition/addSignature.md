@@ -2,7 +2,7 @@
 
 Adds a signature to a petition.
 
-Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#get-petitionspetition_idsignaturesrecent]
+Reference: [https://github.com/change/api_docs/blob/master/v1/documentation/resources/petitions/signatures.md#post-petitionspetition_idsignatures]
 
 Example
 ------
@@ -62,4 +62,4 @@ auth.authorize();
 
 The above example uses the `ChangeOrgApiPetitionAuthorization` interface. Note that you can also access this interface as a convenience through `ChangeOrgApiPetition.getAuthorization`.
 
-Learn more about how [authorization keys](documentation/getting-auth-keys.md) are acquired.
+Learn more about how [authorization keys](/examples/ChangeOrgApiPetition/getAuthorization.md) are acquired.
