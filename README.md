@@ -7,6 +7,13 @@ The Change.org JavaScript API is a free library that enables you to communicate 
 * [Examples](/documentation/interfaces.md)
 * Change.org PHP API _coming soon_
 
+
+Sandbox
+------
+The sandbox is ready! Head over to http://vbuck.github.io/change-js-api/ to play around to make real requests to Change.org using your API keys, and generate the code you need to get started.
+
+Please use an HTML5 browser for the sandbox. I didn't feel like building for old technology. Thanks!
+
 License
 ------
 Copyright (c) 2014 Rick Buczynski.
