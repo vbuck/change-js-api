@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+	    <meta charset="utf-8" />
+	    <title>Sandbox | Change.org JavaScript API</title>
+	    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	    <link href="./assets/css/bootstrap.css" rel="stylesheet" />
+	    <style type="text/css">
+	    	#sandbox_controls {
+	    		text-align: right;
+	    	}
+	    	#sandbox_loader {
+	    		height: 61px;
+	    		width: 100%;
+	    		margin: 0;
+	    		padding: 0;
+	    		background: none !important;
+	    		background-color: #e8e8e8;
+	    		box-shadow: none;
+	    		border: none;
+	    	}
+	    	#sandbox_loader .bar {
+	    		-webkit-background-size: 61px 61px;
+	    		-moz-background-size: 61px 61px;
+	    		background-size: 61px 61px;
+	    		width: 0%;
+	    		-webkit-transition: none;
+	    		-moz-transition: none;
+	    		-o-transition: none;
+	    		-ms-transition: none;
+	    		transition: none;
+	    	}
+	    	#sandbox_generated_code {
+	    		max-height: 250px;
+	    		overflow-y: auto;
+	    	}
+			body {
+				padding-top: 60px;
+				padding-bottom: 75px;
+			}
+			.required {
+				color: #cd6a51 !important;
+				border-color: #cd6a51 !important;
+			}
+			.heading {
+				padding-bottom: 15px;
+				margin-bottom: 30px;
+				border-bottom: #eeeeee solid 1px;
+			}
+			h1 i[class*='icon-'],
+			h2 i[class*='icon-'],
+			h3 i[class*='icon-'] {
+				margin-top: 9px;
+			}
+			.guide {
+				margin: 0;
+				list-style: none;
+				counter-reset: guide-counter;
+			}
+			.guide li {
+				margin: 0 0 30px;
+			}
+			.guide li:before {
+				position: absolute;
+				width: 40px;
+				height: 40px;
+				box-sizing: border-box;
+				content: counter(guide-counter);
+				counter-increment: guide-counter;
+				line-height: 40px;
+				font-size: 24.5px;
+				text-align: center;
+				color: #ffffff;
+				background-color: #0088cc;
+				border-radius: 4px;
+				border: #0066aa solid 1px;
+			}
+			.guide li .title {
+				text-indent: 50px;
+			}
+			.navbar-fixed-top {
+				padding-bottom: 20px;
+				background: -moz-linear-gradient(top,  rgba(255,255,255,1) 0%, rgba(255,255,255,1) 80%, rgba(255,255,255,0) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,1)), color-stop(80%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,0)));
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+				background: -o-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+				background: -ms-linear-gradient(top,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+				background: linear-gradient(to bottom,  rgba(255,255,255,1) 0%,rgba(255,255,255,1) 80%,rgba(255,255,255,0) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#00ffffff',GradientType=0 );
+			}
+			.navbar-fixed-bottom {
+				padding: 20px 20px 0 0;
+				background: -moz-linear-gradient(top,  rgba(255,255,255,0) 0%, rgba(255,255,255,1) 20%, rgba(255,255,255,1) 100%);
+				background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,rgba(255,255,255,0)), color-stop(20%,rgba(255,255,255,1)), color-stop(100%,rgba(255,255,255,1)));
+				background: -webkit-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%);
+				background: -o-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%);
+				background: -ms-linear-gradient(top,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%);
+				background: linear-gradient(to bottom,  rgba(255,255,255,0) 0%,rgba(255,255,255,1) 20%,rgba(255,255,255,1) 100%);
+				filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#00ffffff', endColorstr='#ffffff',GradientType=0 );
+			}
+			.navbar .navbar-inner {
+				box-shadow: none;
+				background: #f5f5f5;
+				border: 0;
+			}
+			.navbar .brand, 
+			.navbar .nav > li > a {
+				color: #808080;
+				text-shadow: none;
+			}
+			.navbar .brand:hover, 
+			.navbar .nav > li > a:hover {
+				color: #a2a2a2;
+			}
+			.navbar .nav > li.active > a:hover, 
+			.navbar .nav > li.active > a {
+				background-color: #ffffff;
+				color: #000000;
+				box-shadow: none;
+				text-shadow: none;
+			}
+			.nav-header {
+				text-transform: none;
+				font-size: 14px;
+			}
+			.nav-list > .active > a, 
+			.nav-list > .active > a:hover, 
+			.nav-list > .active > a:focus {
+				background-color: #707070;
+			}
+			.hero-unit {
+				padding: 20px;
+				background-color: #6f5499;
+				color: #ffffff;
+			}
+			body * {
+				border-radius: 0 !important;
+			}
+			.well {
+				box-shadow: none;
+				border: none;
+				border-right: #eeeeee solid 8px;
+			}
+			.btn {
+				background: none;
+				background-color: #f5f5f5;
+				color: #000000;
+				text-shadow: none;
+				border: 0;
+				box-shadow: none;
+			}
+			.btn-large {
+				padding: 18px 24px;
+				font-size: 21px;
+			}
+			.btn-inverse {
+				background-color: #707070;
+				color: #ffffff;
+			}
+			.btn-primary {
+				color: #ffffff;
+				background-color: #6f5499;
+			}
+			.btn-primary:hover, 
+			.btn-primary:focus, 
+			.btn-primary:active, 
+			.btn-primary.active, 
+			.btn-primary.disabled, 
+			.btn-primary[disabled] {
+				background-color: #8162b3;
+			}
+			.btn-inverse:hover, 
+			.btn-inverse:focus, 
+			.btn-inverse:active, 
+			.btn-inverse.active, 
+			.btn-inverse.disabled, 
+			.btn-inverse[disabled] {
+				background-color: #808080;
+			}
+			button[disabled] {
+				cursor: not-allowed !important;
+			}
+			.modal {
+				width: 700px;
+				margin-left: -340px;
+			}
+	    </style>
+	    <link href="./assets/css/bootstrap-responsive.css" rel="stylesheet" />
+	</head>
+  	<body>
+	    <div class="navbar navbar-fixed-top">
+	      	<div class="navbar-inner">
+		        <div class="container-fluid">
+		      		<button type="button" class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+			        	<span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+			            <span class="icon-bar"></span>
+		          	</button>
+		          	<a class="brand" href="../">[change-js-api]</a>
+		          	<div class="nav-collapse collapse">
+						<ul class="nav">
+							<li class="active">
+								<a href="./">
+									<i class="icon-play"></i>
+									<span>Sandbox</span>
+								</a>
+							</li>
+							<li>
+								<a href="../documentation/">
+									<i class="icon-book"></i>
+									<span>Documentation</span>
+								</a>
+							</li>
+							<li>
+								<a href="../">
+									<i class="icon-download"></i>
+									<span>Download</span>
+								</a>
+							</li>
+						</ul>
+		          	</div>
+		    	</div>
+	      	</div>
+	    </div>
+	    <div class="container-fluid">
+	    	<div class="row-fluid">
+	    		<div class="span3">
+	    			<div class="well sidebar-nav">
+			            <ul class="nav nav-list" id="sandbox_nav">
+							<li class="nav-header">ChangeOrgApiPetition</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.get">get</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getId">getId</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getPetitions">getPetitions</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getTargets">getTargets</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getSignatures">getSignatures</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getRecentSignatures">getRecentSignatures</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.addSignature">addSignature</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getReasons">getReasons</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getUpdates">getUpdates</a>
+							</li>
+							<li>
+								<a href="javascript:;" data-resource="ChangeOrgApiPetition.getAuthorization">getAuthorization</a>
+							</li>
+							<li class="nav-header">ChangeOrgApiUser</li>
+							<li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiUser.get">get</a>
+				            </li>
+				            <li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiUser.getId">getId</a>
+				            </li>
+				            <li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiUser.getPetitions">getPetitions</a>
+				            </li>
+				            <li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiUser.getSignedPetitions">getSignedPetitions</a>
+				            </li>
+							<li class="nav-header">ChangeOrgApiOrganization</li>
+							<li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiOrganization.get">get</a>
+				            </li>
+				            <li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiOrganization.getId">getId</a>
+				            </li>
+				            <li>
+			              		<a href="javascript:;" data-resource="ChangeOrgApiOrganization.getPetitions">getPetitions</a>
+				            </li>
+			            </ul>
+					</div>
+	    		</div>
+	    		<div class="span9">
+	    			<form id="sandbox_form" onsubmit="return false;">
+		    			<div class="hero-unit">
+		    				<i class="icon-ok-circle icon-white pull-right hidden"></i>
+							<p>Every request starts with a <code>ChangeOrgApiClient</code> object. Set your credentials before you begin.</p>
+							<div class="row-fluid">
+								<div class="span6">
+									<input id="api_key" type="text" class="span12 required" placeholder="Your API Key" />
+								</div>
+								<div class="span6">
+									<input id="secret" type="password" class="span12 required" placeholder="Your Secret Key"  title="Your secret key will not be stored!" />
+								</div>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12">
+								<h2 class="heading">
+									<span data-area="title" data-empty="Then, Select a Resource"></span>
+									<code class="pull-right hidden" data-area="endpoint"></code>
+								</h2>
+								<p class="lead" data-area="description" data-empty="You have not selected anything. At left, find an interface and choose a resource."></p>
+								<div class="parameters" data-area="parameters"></div>
+							</div>
+						</div>
+						<div class="row-fluid">
+							<div class="span12 hidden" id="sandbox_results">
+								<h3 class="heading">Response</h3>
+								<pre data-area="results" data-empty="No response."></pre>
+								<a href="javascript:;" id="sandbox_code_inline">Get the code</a>
+							</div>
+						</div>
+						<div id="sandbox_controls" class="navbar navbar-fixed-bottom">
+							<div class="row-fluid">
+								<div class="span8">
+									<div class="progress progress-striped" id="sandbox_loader">
+										<div class="bar"></div>
+									</div>
+								</div>
+								<div class="span4">
+									<input id="sandbox_reset" type="reset" class="btn btn-large" value="Reset" title="Reset the sandbox" />
+									<button id="sandbox_run" class="btn btn-primary btn-large">Run</button>
+									<button id="sandbox_code" type="button" class="btn btn-inverse btn-large" title="Get the code">&lt;/&gt;</button>
+								</div>
+							</div>
+						</div>
+						<div id="sandbox_code_modal" class="modal hidden">
+							<div class="modal-header">
+								<button type="button" class="close" onClick="$('#sandbox_code_modal').addClass('hidden');">&times;</button>
+								<h3>Generated Code</h3>
+							</div>
+							<div class="modal-body">
+								<p>Copy this code to make the request you've just built in the sandbox.</p>
+								<pre id="sandbox_generated_code" data-area="code" data-empty="No code available."></pre>
+							</div>
+							<div class="modal-footer">
+								<a href="javascript:;" id="sandbox_generated_code_close" class="btn btn-inverse" onClick="$('#sandbox_code_modal').addClass('hidden');">Close</a>
+							</div>
+						</div>
+					</form>
+	    		</div>
+	    	</div>
+			<hr />
+			<footer>
+				<p>&copy; 2014 Rick Buczynski. [ <a href="./LICENSE.txt">License</a> | <a href="./ChangeOrgApi/PHP/">Change.org PHP API</a> - <a href="http://www.twitter.com/rickbuczynski">Follow Me</a> ]</p>
+			</footer>
+	    </div>
+	    <script type="text/javascript" src="./assets/js/jquery.js"></script>
+	    <script type="text/javascript" src="../sha256.js"></script>
+	    <script type="text/javascript" src="../changeorgapi.min.js"></script>
+	    <script type="text/javascript" src="./assets/js/strings.js"></script>
+	    <script type="text/javascript" src="./assets/js/resources.js"></script>
+	</body>
+</html>

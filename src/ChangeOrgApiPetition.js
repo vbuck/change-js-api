@@ -25,8 +25,8 @@ var ChangeOrgApiPetition=function(client) {
 		'/v1/petitions/:petition_id/reasons',				// getReasons
 		'/v1/petitions/:petition_id/updates',				// getUpdates
 		'/v1/petitions',									// getPetitions
-		'/v1/petitions/:petition_id',						// getPetition
-		'/v1/petitions/get_id'								// getPetitionId
+		'/v1/petitions/:petition_id',						// get
+		'/v1/petitions/get_id'								// getId
 	];
 
 	/**
@@ -146,7 +146,7 @@ var ChangeOrgApiPetition=function(client) {
 	 * @param function callback
 	 * @return ChangeOrgApiPetition
 	 */
-	this.getPetitionId=function(data,callback) {
+	this.getId=function(data,callback) {
 		if(typeof data=='string')
 			data={petition_url:data};
 

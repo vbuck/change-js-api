@@ -45,15 +45,15 @@ var ChangeOrgApiUtils={
 	 * @return string
 	 */
 	bind: function(input,data) {
-		if(typeof data=='string')
+		if(typeof data!='object')
 			data=[data];
 
 		if(typeof input=='string' && typeof data=='object') {
 			for(var key in data) {
 				if(data instanceof Array)
-					input=input.replace(new RegExp(':[a-zA-Z0-9_]+'),data[key]);
+					input=input.replace(new RegExp(':[a-zA-Z0-9_]+'),new String(data[key]));
 				else
-					input=input.replace(new RegExp(':'+key,'g'),data[key]);
+					input=input.replace(new RegExp(':'+key,'g'),new String(data[key]));
 			}
 		}
 
@@ -1076,8 +1076,8 @@ var ChangeOrgApiPetition=function(client) {
 		'/v1/petitions/:petition_id/reasons',				// getReasons
 		'/v1/petitions/:petition_id/updates',				// getUpdates
 		'/v1/petitions',									// getPetitions
-		'/v1/petitions/:petition_id',						// getPetition
-		'/v1/petitions/get_id'								// getPetitionId
+		'/v1/petitions/:petition_id',						// get
+		'/v1/petitions/get_id'								// getId
 	];
 
 	/**
@@ -1197,7 +1197,7 @@ var ChangeOrgApiPetition=function(client) {
 	 * @param function callback
 	 * @return ChangeOrgApiPetition
 	 */
-	this.getPetitionId=function(data,callback) {
+	this.getId=function(data,callback) {
 		if(typeof data=='string')
 			data={petition_url:data};
 

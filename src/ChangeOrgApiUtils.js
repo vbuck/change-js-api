@@ -45,15 +45,15 @@ var ChangeOrgApiUtils={
 	 * @return string
 	 */
 	bind: function(input,data) {
-		if(typeof data=='string')
+		if(typeof data!='object')
 			data=[data];
 
 		if(typeof input=='string' && typeof data=='object') {
 			for(var key in data) {
 				if(data instanceof Array)
-					input=input.replace(new RegExp(':[a-zA-Z0-9_]+'),data[key]);
+					input=input.replace(new RegExp(':[a-zA-Z0-9_]+'),new String(data[key]));
 				else
-					input=input.replace(new RegExp(':'+key,'g'),data[key]);
+					input=input.replace(new RegExp(':'+key,'g'),new String(data[key]));
 			}
 		}
 
