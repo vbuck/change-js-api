@@ -611,6 +611,7 @@ $(document).ready(function() {
 			catch(error) { 
 				this.updateLoader(-1);
 				alert('Sorry, something went wrong. Please try again.');
+				console.log(error);
 			}
 
 			return this;
