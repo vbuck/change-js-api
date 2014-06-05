@@ -71,6 +71,9 @@ var ChangeOrgApiRequest=function(client) {
 			if(!this.getClient().getSecret() && this.getSignatureRequiredFlag()) { // Mark signature with flag to sign server-side
 				this._data.server_sign=1;
 				this._data.include_auth_key=this.getSignatureAuthKeyRequiredFlag()?1:0;
+
+				if(this._data.include_auth_key)
+					this._data.auth_key=this._authKey;
 			}
 			else if(typeof this._data.rsig=='undefined' || !this._data.rsig.length) {
 				var body=[], signature='';
